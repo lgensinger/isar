@@ -34,6 +34,7 @@ app.init();
 
 // vanilla JS modules
 require("./factories");
+require("./controllers");
 
 // React JS modules
 require("./components");

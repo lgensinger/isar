@@ -138,6 +138,7 @@
         "no-magic-numbers": "off",
         "no-mixed-operators": "error",
         "no-mixed-requires": "error",
+        "no-mixed-spaces-and-tabs": "off",
         "no-multi-assign": "off",
         "no-multi-spaces": "error",
         "no-multi-str": "error",
@@ -172,7 +173,7 @@
         "no-shadow-restricted-names": "error",
         "no-spaced-func": "error",
         "no-sync": "error",
-        "no-tabs": "error",
+        "no-tabs": "off",
         "no-template-curly-in-string": "error",
         "no-throw-literal": "error",
         "no-undef-init": "error",
@@ -194,7 +195,7 @@
         "no-whitespace-before-property": "error",
         "no-with": "error",
         "nonblock-statement-body-position": "error",
-        "object-curly-newline": "error",
+        "object-curly-newline": "off",
         "object-curly-spacing": [
             "error",
             "always"

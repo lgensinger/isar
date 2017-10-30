@@ -1,5 +1,6 @@
 // factory prefixes
 var list = [
+	"dom",
     "utils"
 ];
 

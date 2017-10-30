@@ -1,11 +1,12 @@
-// component prefixes
+// controller prefixes
 var list = [
-    "main"
+    "app",
+    "event"
 ];
 
 // add dependent modules
 for (var i=0; i < list.length; i++) {
     
-    require("./" + list[i] + "-component");
+    require("./" + list[i] + "-controller");
     
 }
