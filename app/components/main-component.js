@@ -15,12 +15,24 @@ app.mainComponent = (function() {
 		// store data
 		sections: [
 			{
-				label: "Initiatives",
-                data: ["Big Data Accessibility", "Cognitive Computing", "Cyber Security", "Identity", "Urban Informatics"]
-			},
-			{
 				label: "Tasks",
-                data: ["Anomaly Detection", "Language Translation", "Object Detection"]
+                values: [
+                    {
+                        uid: "anomaly-detection",
+                        label: "Anomaly Detection",
+                        value: 1
+                    },
+                    {
+                        uid: "language-translation",
+                        label: "Language Translation",
+                        value: 2
+                    },
+                    {
+                        uid: "object-detection",
+                        label: "Object Detection",
+                        value: 15
+                    }
+                ]
 			}
 		],
 		

@@ -1,5 +1,7 @@
 // factory prefixes
 var list = [
+    "api",
+    "data",
 	"dom",
     "utils"
 ];
