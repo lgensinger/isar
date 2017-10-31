@@ -4,18 +4,23 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 var createReactClass = require("create-react-class");
 
+require("./aggregate-component");
 
 app.mainComponent = (function() {
+    
+    var aggregateList = app.aggregateList;
 	
 	return {
 		
 		// store data
 		sections: [
 			{
-				name: "aggregate"
+				label: "Initiatives",
+                data: ["Big Data Accessibility", "Cognitive Computing", "Cyber Security", "Identity", "Urban Informatics"]
 			},
 			{
-				name: "progress"
+				label: "Tasks",
+                data: ["Anomaly Detection", "Language Translation", "Object Detection"]
 			}
 		],
 		
@@ -25,7 +30,7 @@ app.mainComponent = (function() {
 			var _self = this;
 			
 			// top level component
-			var isar = createReactClass({
+			return createReactClass({
 
 				displayName: "isar",
 
@@ -37,13 +42,25 @@ app.mainComponent = (function() {
 						React.createElement(
 						  "section",
 						  null,
-						  _self.sections.map(function (week) {
-							return React.createElement(
-							  "li",
-							  null,
-							  week.name
-							);
-						  })
+                            
+                            // add aggregate list component
+                            _self.sections.map(function(section, i) {
+                                
+                                return React.createElement(
+                                    "div",
+                                    {
+                                        key: "idx-" + i
+                                    },
+                                    
+                                    // aggregate list
+                                    React.createElement(aggregateList, {
+                                        section: section
+                                    })
+                                    
+                                );
+                                
+                            })
+
 						)
 
 					);
@@ -51,9 +68,7 @@ app.mainComponent = (function() {
 				}
 
 			});
-			
-			return isar;
-			
+						
 		},
 		
 		// render component
