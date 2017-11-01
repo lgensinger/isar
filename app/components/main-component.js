@@ -3,6 +3,7 @@ var app = window.app;
 var React = require("react");
 var ReactDOM = require("react-dom");
 var createReactClass = require("create-react-class");
+var PropTypes = require("prop-types");
 
 require("./aggregate-component");
 
@@ -11,30 +12,6 @@ app.mainComponent = (function() {
     var aggregateList = app.aggregateList;
 	
 	return {
-		
-		// store data
-		sections: [
-			{
-				label: "Tasks",
-                values: [
-                    {
-                        uid: "anomaly-detection",
-                        label: "Anomaly Detection",
-                        value: 1
-                    },
-                    {
-                        uid: "language-translation",
-                        label: "Language Translation",
-                        value: 2
-                    },
-                    {
-                        uid: "object-detection",
-                        label: "Object Detection",
-                        value: 15
-                    }
-                ]
-			}
-		],
 		
 		// create component
 		create: function() {
@@ -45,6 +22,10 @@ app.mainComponent = (function() {
 			return createReactClass({
 
 				displayName: "isar",
+				
+				propTypes: {
+					sections: PropTypes.arrayOf(PropTypes.object)
+				},
 
 				render: function() {
 
@@ -56,7 +37,7 @@ app.mainComponent = (function() {
 						  null,
                             
                             // add aggregate list component
-                            _self.sections.map(function(section, i) {
+                            this.props.sections.map(function(section, i) {
                                 
                                 return React.createElement(
                                     "div",
@@ -84,12 +65,14 @@ app.mainComponent = (function() {
 		},
 		
 		// render component
-		render: function(id) {
+		render: function(id, data) {
 			
 			var _self = this;
 			
 			ReactDOM.render(
-				React.createElement(_self.create(), {}),
+				React.createElement(_self.create(), {
+					sections: data
+				}),
 				document.getElementById(id)
 			);
 			

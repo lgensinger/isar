@@ -1,29 +1,43 @@
 var app = window.app;
 var projectMap = require("../../project-map");
+var token = require("../../token");
 
 require("./api-factory");
+require("./issue-factory");
+require("./project-factory");
+require("./utils-factory");
 
 app.dataFactory = (function() {
     
     var apiFactory = app.apiFactory;
+	var issueFactory = app.issueFactory;
+	var projectFactory = app.projectFactory;
+	var utilsFactory = app.utilsFactory;
     
     return {
-        
-        // calculate value as a percentage of all
-        getPercent: function(category, value) {
-            
-            var config = projectMap()[category];
-            
-            // get issues from api
-            apiFactory.makeRequest("GET", config.git).then(function(response) {
-                console.log(response);
-            }, function(error) {
-                console.log(error);
-            });
-            
-            return value;
-            
-        }
+		
+		// build top level data object
+		build: function() {
+						
+			// get all promises
+			return new Promise(function(resolve, reject) {
+				
+				// get all issues
+				issueFactory.get().then(function(data) {
+					
+					// success
+					resolve(data);
+					
+				}, function(error) {
+					
+					// error
+					reject(error);
+					
+				});
+				
+			});
+			
+		}
         
     };
     

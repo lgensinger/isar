@@ -3,6 +3,8 @@ var list = [
     "api",
     "data",
 	"dom",
+	"issue",
+	"project",
     "utils"
 ];
 

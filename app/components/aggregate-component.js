@@ -72,7 +72,7 @@ app.aggregateList = (function(d) {
                                     "span",
                                     null,
                                     
-                                    dataFactory.getPercent(item.uid, item.value)
+                                    item.value
                                     
                                 )
                                 

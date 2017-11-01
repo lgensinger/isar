@@ -1,11 +1,13 @@
 var config = require("../app-frontend-config");
 var app = window.app;
 
+require("../factories/data-factory");
 require("../factories/dom-factory");
 require("../components/main-component");
 
 app.appController = (function() {
     
+	var dataFactory = app.dataFactory;
     var domFactory = app.domFactory;
 	var mainComponent = app.mainComponent;
     
@@ -19,7 +21,12 @@ app.appController = (function() {
 	var id = "app";
     var container = domFactory.addElement("main", document.body, { id: id });
 	
-	// render components into container
-	mainComponent.render(id);
+	// get data
+	dataFactory.build().then(function(data) {
+		console.log(data);
+		// render components into container
+		//mainComponent.render(id, data);
+		
+	});
     
 })();

@@ -7,16 +7,88 @@ app.apiFactory = (function() {
         
         // store data
         success: 200,
-        base: "/api/v4/issues?private_token=" + token(),
+        base: {
+			api: "/api/v4/",
+			issues: "issues?scope=all&state=opened&per_page=100&",
+			projects: "projects?"
+		},
+		
+		// get issues from gitlab instance
+		get: function(url, token, type) {
+			
+			var _self = this;
+			
+			// create promise
+			return new Promise(function(resolve, reject) {
+				
+				// make API request
+				_self.makeRequest("GET", url, token, type).then(function(data) {
+					
+					// success
+					resolve(data);
+					
+				}, function(error) {
+					
+					// error
+					reject(error);
+					
+				});
+				
+			});
+
+		},
+		
+		// get all of a type from all gitlab instances
+		getAll: function(array, type) {
+			
+			var _self = this;
+			
+			// create promise
+			return new Promise(function(resolve, reject) {
+								
+				// get data objects from array of gitlab instances
+				var promises = array.map(function(d) {
+					
+					// make an async call for each object in the list
+					return _self.get(d.git_ip, d.git_token, type).then(function(data) {
+						
+						// success
+						return data;
+						
+					}, function(error) {
+						
+						// error
+						return error;
+						
+					});
+					
+				});
+				
+				// wait for all promises to resolve before returning
+				Promise.all(promises).then(function(data) {
+					
+					// success
+					resolve(data);
+					
+				}, function(error) {
+					
+					// error
+					reject(error);
+					
+				});
+				
+			});
+			
+		},
         
         // make request
-        makeRequest: function(method, ip, obj) {
+        makeRequest: function(method, ip, token, type, obj) {
             
             var _self = this;
             
             // values for request
             var data = obj || "";
-            var url = ip + _self.base;
+            var url = ip + _self.base.api + _self.base[type] + "private_token=" + token;
             
             // create promise
             return new Promise(function(resolve, reject) {
@@ -57,7 +129,21 @@ app.apiFactory = (function() {
                 
             });
             
-        }
+        },
+		
+		// prune git info for multiple calls
+		prune: function() {
+			
+			// convert object map to array
+			return Object.keys(token()).map(function(d) {
+				return {
+					git_uid: d,
+					git_ip: token()[d].git,
+					git_token: token()[d].token
+				};
+			});
+			
+		}
         
     };
     
