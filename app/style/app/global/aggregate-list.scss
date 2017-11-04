@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** aggregate-list STYLE ***************************************/
+
+@import "../system/palettes.scss";
+
+.aggregate-list li span:first-of-type {
+	background: currentColor;
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+	
+}

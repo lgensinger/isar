@@ -6,55 +6,59 @@ var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
 require("./aggregate-component");
+require("./progress-component");
 
 app.mainComponent = (function() {
-    
-    var aggregateList = app.aggregateList;
 	
 	return {
+		
+		// store references to other components
+		componentMap: {
+			aggregate: app.aggregate,
+			progress: app.progress
+		},
 		
 		// create component
 		create: function() {
 			
 			var _self = this;
 			
-			// top level component
+			// app level component
 			return createReactClass({
 
 				displayName: "isar",
 				
 				propTypes: {
-					sections: PropTypes.arrayOf(PropTypes.object)
+					data: PropTypes.object
 				},
 
 				render: function() {
+					
+					var components = this.props.data.layout;
+					var content = this.props.data.content;
 
 					return (
-
-						// component wrap
-						React.createElement(
-						  "section",
-						  null,
                             
-                            // add aggregate list component
-                            this.props.sections.map(function(section, i) {
-                                
-                                return React.createElement(
-                                    "div",
-                                    {
-                                        key: "idx-" + i
-                                    },
-                                    
-                                    // aggregate list
-                                    React.createElement(aggregateList, {
-                                        section: section
-                                    })
-                                    
-                                );
-                                
-                            })
+						// add each defined component
+						components.map(function(component, i) {
+							
+							return React.createElement(
+								"section",
+								{
+									key: "idx-" + i,
+									className: component.uid
+								},
+								
+								// add component
+								React.createElement(_self.componentMap[component.uid], {
+									component: component,
+									content: content,
+									idx: i
+								})
 
-						)
+							);
+
+						})
 
 					);
 
@@ -71,7 +75,7 @@ app.mainComponent = (function() {
 			
 			ReactDOM.render(
 				React.createElement(_self.create(), {
-					sections: data
+					data: data
 				}),
 				document.getElementById(id)
 			);

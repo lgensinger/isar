@@ -5,18 +5,11 @@ var ReactDOM = require("react-dom");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
-require("./aggregate-list-component");
-
-app.aggregate = (function() {
-	
-	// store references to other components
-	var componentMap = {
-		"aggregate-list": app.aggregateList
-	};
+app.progress = (function() {
 
     return createReactClass({
 
-        displayName: "aggregate",
+        displayName: "progress",
         
         propTypes: {
             component: PropTypes.object.isRequired,
@@ -27,7 +20,6 @@ app.aggregate = (function() {
         render: function() {
 			
 			var components = this.props.component.components;
-			var content = this.props.content;
 			
             return (
                     
@@ -37,16 +29,9 @@ app.aggregate = (function() {
 					return React.createElement(
 						"div",
 						{
-							key: "idx-" + i,
-							className: component.uid
+							key: "idx-" + i
 						},
-						
-						// add component
-						React.createElement(componentMap[component.uid], {
-							component: component,
-							content: content,
-							idx: i
-						})
+						component.uid
 
 					);
 

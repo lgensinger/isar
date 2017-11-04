@@ -1,6 +1,9 @@
 // component prefixes
 var list = [
-    "main"
+	"aggregate",
+	"aggregate-list",
+    "main",
+	"progress"
 ];
 
 // add dependent modules

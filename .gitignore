@@ -45,3 +45,5 @@ dist
 ########
 project-map.js
 token.js
+initiatives.js
+data-config.js

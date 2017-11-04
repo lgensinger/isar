@@ -1,16 +1,22 @@
 /*************************** STYLE ***************************/
 
 // app stylesheets
+var styleBase = "./style/app/";
+var themeBase = styleBase + "themes/";
 
 // design system
+require("./style/app/system");
 
 // base platform
 
 // global components
+require("./style/app/global");
 
 // main
 
 // themes
+require(themeBase + "dark.scss");
+require(themeBase + "light.scss");
 
 // secondary platforms
 

@@ -1,7 +1,11 @@
 var app = window.app;
 var token = require("../../token");
 
+require("./global-factory");
+
 app.apiFactory = (function() {
+	
+	var globalFactory = app.globalFactory;
     
     return {
         
@@ -10,7 +14,7 @@ app.apiFactory = (function() {
         base: {
 			api: "/api/v4/",
 			issues: "issues?scope=all&state=opened&per_page=100&",
-			projects: "projects?"
+			projects: "projects?per_page=100&"
 		},
 		
 		// get issues from gitlab instance
@@ -131,7 +135,7 @@ app.apiFactory = (function() {
             
         },
 		
-		// prune git info for multiple calls
+		// prune git info to reduce multiple calls
 		prune: function() {
 			
 			// convert object map to array

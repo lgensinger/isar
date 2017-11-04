@@ -23,9 +23,9 @@ app.appController = (function() {
 	
 	// get data
 	dataFactory.build().then(function(data) {
-		console.log(data);
+		
 		// render components into container
-		//mainComponent.render(id, data);
+		mainComponent.render(id, data);
 		
 	});
     
