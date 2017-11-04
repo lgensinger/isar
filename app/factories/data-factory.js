@@ -57,7 +57,8 @@ app.dataFactory = (function() {
 			
 			// content objects
 			var content = {
-				initiatives: _self.nest(source, "focus_uid", "count"),
+				initiatives: _self.nest(source, "initiative_uid", "count"),
+                rings: _self.nest(source, "focus_uid", "count"),
 				tasks: _self.nest(source, "focus_uid", "count")
 			};
 

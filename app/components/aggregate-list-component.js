@@ -35,9 +35,7 @@ app.aggregateList = (function() {
                 // component wrap
                 React.createElement(
                   "div",
-                    {
-                        className: component.uid
-                    },
+                    null,
 
                     // headline
                     React.createElement(

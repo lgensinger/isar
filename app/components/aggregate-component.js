@@ -6,12 +6,14 @@ var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
 require("./aggregate-list-component");
+require("./ring-chart-component");
 
 app.aggregate = (function() {
 	
 	// store references to other components
 	var componentMap = {
-		"aggregate-list": app.aggregateList
+		"aggregate-list": app.aggregateList,
+        "ring-chart": app.ringChart
 	};
 
     return createReactClass({

@@ -3,7 +3,8 @@ var list = [
 	"aggregate",
 	"aggregate-list",
     "main",
-	"progress"
+	"progress",
+    "ring-chart"
 ];
 
 // add dependent modules

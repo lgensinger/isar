@@ -10,7 +10,8 @@ var list = [
 	"issue",
 	"math",
 	"project",
-    "utils"
+    "utils",
+    "visualization"
 ];
 
 // add dependent modules

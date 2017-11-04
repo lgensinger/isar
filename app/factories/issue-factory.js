@@ -33,6 +33,7 @@ app.issueFactory = (function() {
 						
 						// make focus other
 						value.focus_uid = "other";
+                        value.initiative_uid = "other";
 						
 						// add project data to issue object
 						projects.forEach(function(v, k) {
@@ -52,11 +53,11 @@ app.issueFactory = (function() {
 							// check if project has a focus
 							if (Object.keys(globalFactory.projects).includes(value.project.name)) {
 								
-								// get foci keys
-								var fociKeys = Object.keys(globalFactory.projects[value.project.name]);
+								// get data config keys
+								var dataconfigKeys = Object.keys(globalFactory.projects[value.project.name]);
 								
 								// loop through keys
-								fociKeys.forEach(function(v, k) {
+								dataconfigKeys.forEach(function(v, k) {
 									
 									// add focus data to issue object
 									value[v] = globalFactory.projects[value.project.name][v];

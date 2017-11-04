@@ -20,6 +20,11 @@ function config() {
 						label: "initiatives",
 						data: "initiatives"
 					},
+                    {
+                        uid: "ring-chart",
+                        label: "mapping",
+                        data: "rings"
+                    },
 					{
 						uid: "aggregate-list",
 						label: "tasks",
