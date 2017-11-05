@@ -23,18 +23,6 @@ app.visualizationFactory = (function() {
                                                 
             return { width: width, height: height };
             
-        },
-        
-        // draw svg
-        drawSVG: function(element, w, h) {
-            
-            // create svg
-            var svg = d3.select(element)
-                .append("svg")
-                .attr("viewBox", "0 0 " + w + " " + h);
-            
-            return svg;
-            
         }
         
     };

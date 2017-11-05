@@ -14,8 +14,15 @@
 }
 
 .ring-chart {
-    background: lightgrey;
+    
     height: 300px;
     width: 300px;
+    
+}
+
+.ring-chart path {
+    
+    stroke: white;
+    stroke-width: 1px;
     
 }

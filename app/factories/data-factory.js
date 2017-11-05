@@ -54,12 +54,23 @@ app.dataFactory = (function() {
 		enrich: function(source) {
 			
 			var _self = this;
+            
+            var tasks = _self.nest(source, "focus_uid", "count");
+            var initiatives = _self.nest(source, "initiative_uid", "count");
+            var simplified = source.map(function(d) {
+                return {
+                    focus_uid: d.focus_uid,
+                    initiative_uid: d.initiative_uid,
+                    key: d.title,
+                    value: 1
+                };
+            });
 			
 			// content objects
 			var content = {
-				initiatives: _self.nest(source, "initiative_uid", "count"),
-                rings: _self.nest(source, "focus_uid", "count"),
-				tasks: _self.nest(source, "focus_uid", "count")
+				initiatives: initiatives,
+                rings: [simplified, tasks, initiatives],
+				tasks: tasks
 			};
 
 			// add content to layout data
