@@ -28,7 +28,7 @@ app.aggregateList = (function() {
 			var component = this.props.component;
 			var content = this.props.content;
 			var list = content[component.data];
-			var total = mathFactory.sumOfOjectArray(list);
+			var total = mathFactory.sumOfOjectArray(list, "spent");
 			
             return (
 
@@ -54,9 +54,7 @@ app.aggregateList = (function() {
                                 
                             return React.createElement(
                                 "li",
-                                {
-                                    key: "idx-" + i
-                                },
+                                { key: "idx-" + i },
                                 
                                 // item graphic
                                 React.createElement(
@@ -83,7 +81,7 @@ app.aggregateList = (function() {
                                     "span",
                                     null,
                                     
-                                    mathFactory.percentOfWhole(item.value, total, true) + "%"
+                                    mathFactory.percentOfWhole(item.value.time.spent, total, true) + "%"
                                     
                                 )
                                 

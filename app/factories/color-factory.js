@@ -1,20 +1,39 @@
 var dataConfig = require("../../data-config");
 var app = window.app;
 
+require("./pattern-factory");
+
 app.colorFactory = (function() {
+	
+	var patternFactory = app.patternFactory;
     
     return {
 		
 		// store data
-		"anomaly-detection": dataConfig().foci["anomaly-detection"].color,
-		"object-detection": dataConfig().foci["language-translation"].color,
-		"language-translation": dataConfig().foci["object-detection"].color,
-		other: "grey",
-        "big-data-accessibility": dataConfig().initiatives["big-data-accessibility"].color,
-        "cognitive-computing": dataConfig().initiatives["cognitive-computing"].color,
-        "cyber-security": dataConfig().initiatives["cyber-security"].color,
-        "identity": dataConfig().initiatives.identity.color,
-        "urban-informatics": dataConfig().initiatives["urban-informatics"].color
+		other: "lightgrey",
+		
+		// store color based on data-config
+		store: function(type) {
+			
+			var _self = this;
+			
+			// get keys
+			var keys = Object.keys(dataConfig()[type]);
+			
+			// loop through keys
+			for (var i = 0; i < keys.length; i++) {
+				
+				var key = keys[i];
+				
+				// store color value in factory
+				_self[key] = dataConfig()[type][key].fill.color;
+				
+				// create patterns and store
+				patternFactory.create(key, dataConfig()[type][key].fill);
+				
+			}
+			
+		}
         
     };
     

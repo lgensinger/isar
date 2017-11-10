@@ -7,6 +7,7 @@ app.globalFactory = (function() {
 		// store data
 		git: null,
 		foci: null,
+		assignees: null,
 		
 		// set data
         setData: function(key, data) {

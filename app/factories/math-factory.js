@@ -3,6 +3,17 @@ var app = window.app;
 app.mathFactory = (function() {
     
     return {
+		
+		// convert minutes to hours
+		convertMinutes: function(seconds) {
+			
+			var minutes = seconds / 60;
+			var hours = minutes / 60;
+			var data = hours / 24;
+			
+			return Math.floor(hours);
+			
+		},
         
         // return a percent value and text label
         percentOfWhole: function(value, total, shouldRound) {
@@ -12,11 +23,11 @@ app.mathFactory = (function() {
         },
 		
 		// get the sum of a key from an array of objects
-		sumOfOjectArray: function(array) {
+		sumOfOjectArray: function(array, key) {
 			
 			// create simple array of values
 			var values = array.map(function(d) {
-				return d.value;
+				return d.value.time[key];
 			});
 				
 			// sum the array of values

@@ -2,8 +2,14 @@
 var list = [
 	"aggregate",
 	"aggregate-list",
+	"area-circle-chart",
+	"fill-chart",
+	"foci",
     "main",
+	"personnel",
 	"progress",
+	"progress-card",
+	"progress-list",
     "ring-chart"
 ];
 

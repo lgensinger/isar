@@ -5,6 +5,12 @@
 
 @import "../system/palettes.scss";
 
+.aggregate {
+	
+	display: flex;
+	
+}
+
 .aggregate-list li span:first-of-type {
 	background: currentColor;
 	display: inline-block;
@@ -25,4 +31,87 @@
     stroke: white;
     stroke-width: 1px;
     
+}
+
+.personnel {
+	
+	display: flex;
+	
+}
+
+/* each assignee column */
+.personnel > div {
+	
+	width: 100%;
+	
+}
+
+/* attrs wrap */
+.area-circle-chart > div {
+	
+	display: flex;
+	
+}
+
+/* area circle chart wrap */
+.area-circle-chart > div > div {
+	
+	height: auto;
+	width: 30%;
+	
+}
+
+/* estimate circle */
+.area-circle-chart svg g g:first-of-type circle {
+	
+	fill: transparent;
+	stroke: currentColor;
+	stroke-width: 2px;
+	
+}
+
+/* spend circle */
+.area-circle-chart svg g g:last-of-type circle {
+	
+	fill: currentColor;
+	
+}
+
+/* title/state wrap */
+.progress-list > div > div > div:first-child {
+	
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+/* updated/focus wrap */
+.progress-list > div > div p:last-of-type {
+	
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+/* fill chart background */
+.fill-chart rect:last-of-type {
+	
+	fill: transparent;
+	stroke: currentColor;
+	stroke-width: 0.5px;
+	
+}
+
+/* foci wrap */
+.foci {
+	
+	display: flex;
+	
+}
+
+/* foci wrap div */
+.foci > div {
+	
+	width: 100%;
+	
 }

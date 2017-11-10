@@ -2,61 +2,53 @@ var app = window.app;
 var dataConfig = require("../../data-config");
 var token = require("../../token");
 
-require("./project-factory");
-
 app.fociFactory = (function() {
-	
-	var projectFactory = app.projectFactory;
-    
+	    
     return {
 		
 		// prune project info
-		prune: function() {
+		prune: function(assignees) {
 			
+			var data = {};
+			var d = {};
+			
+			// custom foci defined in data-config module
 			var foci = dataConfig().foci;
 			
-			// using the objects provided in project-map module
-			// map the objects to arrays b/c JS likes those more
-			var list = Object.keys(foci).map(function(d, i) {
+			// using the objects provided in data-config module
+			for (var key in foci) {
 				
 				// get object data based on key
-				var o = foci[d];
-				
-				// move key to unique id key inside object
-				o.focus_uid = Object.keys(foci)[i];
-				
-				// add git unique id
-				o.git_uid = o.git;
-				
-				// get ip from token module
-				o.git_ip = token()[o.git].git;
-				
-				// get token from token module
-				o.git_token = token()[o.git].token;
+				var o = foci[key];
 				
 				// add git projects
 				o.git_projects = o.projects;
 				
-				// extract project data & store in global
-				projectFactory.store(o.projects, o);
+				// loop through projects
+				for (var i = 0; i < o.projects.length; i++) {
+					
+					// add to project data
+					d[o.projects[i]] = {
+						focus_uid: key,
+						initiative_uid: null
+					};
+					
+				}
 				
-				// remove unused an ambiguous keys
-				Reflect.deleteProperty(o, "label");
-				Reflect.deleteProperty(o, "git");
+				// replace user id with assignee name
+				o.lead = o.lead.map(function(d) {
+					return assignees[dataConfig().assignees.label_git][d];
+				});
+				
+				// remove unused and ambiguous keys
 				Reflect.deleteProperty(o, "projects");
 				
-				return o;
-								
-			});
+				// add to data
+				data[key] = o;
+												
+			};
 			
-			var data = {};
-			
-			// re-map to object
-			list.forEach(function(value, key) {
-				data[value.focus_uid] = value;
-			});
-			
-			return data;
+			return { foci: data, projects: d };
 			
 		}
         

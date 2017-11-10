@@ -13,17 +13,17 @@ app.projectFactory = (function() {
     return {
 		
 		// get all projects from all gitlab instances
-		get: function() {
-			
-			var list = apiFactory.prune();
-			
+		get: function(data) {
+						
 			// get all promises
 			return new Promise(function(resolve, reject) {
 				
 				// call all API endpoints gitlab projects
-				apiFactory.getAll(list, "projects").then(function(data) {
+				apiFactory.getAll(data, "projects").then(function(data) {
 					
 					// success
+					
+					// flatten array of arrays
 					resolve(utilsFactory.flatten(data));
 					
 				}, function(error) {
@@ -34,30 +34,6 @@ app.projectFactory = (function() {
 				});
 				
 			});
-			
-		},
-		
-		// extract from foci info and store in global
-		store: function(list, data) {
-			
-			// check global storage
-			var inGlobal = globalFactory.projects === undefined ? false : true;
-						
-			// loop through list
-			for (var i = 0; i < list.length; i++) {
-				
-				// no data stored
-				if (!inGlobal) {
-					
-					// add empty project object first
-					globalFactory.projects = {};
-					
-				}			
-				
-				// add to stored values
-				globalFactory.projects[list[i]] = data;
-			
-			}
 			
 		}
         

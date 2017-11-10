@@ -1,65 +1,48 @@
 var app = window.app;
 var dataConfig = require("../../data-config");
 
-require("./global-factory");
-
 app.initiativeFactory = (function() {
-	
-	var globalFactory = app.globalFactory;
-	    
+		    
     return {
 		
 		// prune project info
-		prune: function() {
+		prune: function(projectMap) {
 			
 			var _self = this;
+			var data = {};
 			
+			// custom initiatives defined in data-config module
 			var initiatives = dataConfig().initiatives;
 			
-			// using the objects provided in project-map module
-			// map the objects to arrays b/c JS likes those more
-			var list = Object.keys(initiatives).map(function(d, i) {
+			// using the objects provided in data-config module
+			for (var key in initiatives) {
 				
 				// get object data based on key
-				var o = initiatives[d];
+				var o = initiatives[key];
 				
 				// move key to unique id key inside object
-				o.initiative_uid = Object.keys(initiatives)[i];
+				o.initiative_uid = key;
 				
-				// add git projects
+				// add git projects remapped to remove the git prefix
 				o.git_projects = o.projects;
 				
-				// store in global
-				_self.store(o.projects, o.initiative_uid);
+				// loop through projects
+				for (var i = 0; i < o.projects.length; i++) {
+					
+					// add to project data
+					projectMap[o.projects[i]].initiative_uid = key;
+					
+				}
 				
 				// remove unused an ambiguous keys
 				Reflect.deleteProperty(o, "projects");
 				
-				return o;
+				// add to data
+				data[key] = o;
 								
-			});
+			};
 			
-			var data = {};
-			
-			// re-map to object
-			list.forEach(function(value, key) {
-				data[value.initiative_uid] = value;
-			});
-			
-			return data;
-			
-		},
-		
-		// store by project in global
-		store: function(projects, inititative) {
-			
-			// loop through projects
-			for (var i = 0; i < projects.length; i++) {
-				
-				// add initiative info to global storage
-				globalFactory.projects[projects[i]].initiative_uid = inititative;
-				
-			}
+			return { initiatives: data, projects: projectMap };
 			
 		}
         

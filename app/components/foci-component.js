@@ -5,20 +5,18 @@ var ReactDOM = require("react-dom");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
-require("./foci-component");
-require("./personnel-component");
+require("./progress-card-component");
 
-app.progress = (function() {
+app.foci = (function() {
 	
 	// store references to other components
 	var componentMap = {
-		foci: app.foci,
-		personnel: app.personnel
+		"progress-card": app.progressCard
 	};
 
     return createReactClass({
 
-        displayName: "progress",
+        displayName: "foci",
         
         propTypes: {
             component: PropTypes.object.isRequired,
@@ -29,29 +27,37 @@ app.progress = (function() {
         render: function() {
 			
 			var components = this.props.component.components;
-			var content = this.props.content;
+			var content = this.props.content[this.props.component.data];
 			
             return (
                     
-				// add each defined component
-				components.map(function(component, i) {
-
+				// add defined component for each item in content
+				content.map(function(item, i) {
+					
 					return React.createElement(
 						"div",
-						{
-							key: "idx-" + i,
-							className: component.uid
-						},
+						{ key: "idx-" + i },
 						
-						// add component
-						React.createElement(componentMap[component.uid], {
-							component: component,
-							content: content,
-							idx: i
+						// components
+						components.map(function(component, j) {
+
+							return React.createElement(
+								"div",
+								{ key: "idx-" + j },
+
+								// add component
+								React.createElement(componentMap[component.uid], {
+									component: component,
+									content: content[i],
+									idx: i
+								})
+
+							);
+
 						})
-
+						
 					);
-
+					
 				})
 
             );

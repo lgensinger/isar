@@ -6,6 +6,7 @@ var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
 require("../factories/color-factory");
+require("../factories/pattern-factory");
 require("../factories/visualization-factory");
 
 var d3 = require("d3");
@@ -13,6 +14,7 @@ var d3 = require("d3");
 app.ringChart = (function() {
     
     var colorFactory = app.colorFactory;
+	var patternFactory = app.patternFactory;
     var visualizationFactory = app.visualizationFactory;
 						
     return createReactClass({
@@ -36,26 +38,32 @@ app.ringChart = (function() {
             // get initial data from component
             var component = this.props.component;
 			var content = this.props.content;
-            var rings = content[component.data];
             
             // use d3 to process component data into svg data
-            var data = _self._enrichRings(rings);
-            
-            // store enriched data to component for render
-            _self.rings = data;
+            _self.rings = _self._enrichRings(content[component.data]);
             
         },
 
         render: function() {
 			
             var _self = this;
-			
+
             return (
 
                 // component wrap
                 React.createElement(
                   "svg",
                     { viewBox: "0 0 " + _self.width + " " + _self.height },
+					
+					// add patterns
+					Object.keys(patternFactory.patterns).map(function(key, i) {
+						
+						var pattern = patternFactory.patterns[key];
+						
+						// build pattern element for each applicable slice
+						return patternFactory.define(pattern, key, i);
+						
+					}),
                     
                     // svg center translation
                     // this allows more intuitive artboard coords
@@ -76,7 +84,7 @@ app.ringChart = (function() {
                                   
                                 // slice item
                                 slices.map(function(item, i) {
-                                    console.log(item);
+                                    
                                     return React.createElement(
                                         "g",
                                         { key: "idx-" + i },
@@ -86,7 +94,7 @@ app.ringChart = (function() {
                                             "path",
                                             {
                                                 d: _self.arc(item),
-                                                fill: colorFactory[item.data.focus_uid === undefined ? item.data.key : item.data.initiative_uid]
+												fill: item.data.value.nest === "focus_uid" && item.data.key !== "other" ? "url(#pattern-" + patternFactory.patterns[item.data.key].name + "-" + item.data.key + ")" : colorFactory[item.data.key]
                                             },
                                             null
                                         )
@@ -114,7 +122,7 @@ app.ringChart = (function() {
             var _self = this;
             
             // calculate new outer radius
-            var radius = _self.radius - (_self.radius * (idx * 0.15));
+            var radius = _self.radius - (_self.radius * (idx * 0.5));
             
             // update radii based on ring index
             _self.arc
@@ -147,7 +155,7 @@ app.ringChart = (function() {
 
             // set up the pie layout algorithm
             _self.pie = d3.pie()
-                .value(function(d) { return d.value; });
+                .value(function(d) { return d.value.time.spent; });
             
         },
         

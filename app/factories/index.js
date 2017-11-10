@@ -1,15 +1,20 @@
 // factory prefixes
 var list = [
     "api",
+	"assignee",
 	"color",
     "data",
 	"dom",
+	"filter",
 	"foci",
+	"git",
 	"global",
 	"initiative",
 	"issue",
 	"math",
+	"pattern",
 	"project",
+	"time",
     "utils",
     "visualization"
 ];

@@ -27,14 +27,44 @@ function config() {
                     },
 					{
 						uid: "aggregate-list",
-						label: "tasks",
-						data: "tasks"
+						label: "foci",
+						data: "foci"
 					}
 				]
 			},
 			{
 				uid: "progress",
-				components: []
+				components: [
+					{
+						uid: "personnel",
+						label: "staff",
+						data: "staff",
+						components: [
+							{
+								uid: "area-circle-chart",
+								label: "area",
+								data: "staff"
+							},
+							{
+								uid: "progress-list",
+								label: "staff",
+								data: "staff_list"
+							}
+						]
+					},
+					{
+						uid: "foci",
+						label: "foci",
+						data: "foci",
+						components: [
+							{
+								uid: "progress-card",
+								label: "card",
+								data: "foci_percent"
+							}
+						]
+					}
+				]
 			}
 		]
         
