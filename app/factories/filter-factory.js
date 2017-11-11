@@ -72,7 +72,7 @@ app.filterFactory = (function() {
 		},
 		
 		// filter for current milestone by date across git instances
-		milestone: function(source, configs) {
+		filter: function(source, configs, shouldFilterAssignees) {
 			
 			var _self = this;
 			var data = [];
@@ -83,42 +83,60 @@ app.filterFactory = (function() {
 				var item = source[i];		
 				var dates = _self.getCurrentWeek(item);
 				
-				// check for assignee we care about tracking
-				if (_self.assignee(item, configs)) {
+				// check if filtering for assignees
+				if (shouldFilterAssignees) {
+				
+					// check for assignee we care about tracking
+					if (_self.assignee(item, configs)) {
 
-					// check if date values are inside the current week (sunday to saturday)
-
-					// milestone start
-					if (dates.start) {
-
-						// add to data
-						data.push(item);
-
-					// milestone end
-					} else if (dates.end) {
-
-						// add to data
-						data.push(item);
-
-					// item due date
-					} else if (dates.due) {
-
-						// add to data
-						data.push(item);
-
-					// check for Doing label
-					} else if (item.labels.length > 0 && item.labels.includes("Doing")) {
-
-						// add to data
-						data.push(item);
-
+						// filter for time
+						_self.time(item, dates, data);
+						
 					}
+					
+				} else {
+					
+					// filter for time
+					_self.time(item, dates, data);
 					
 				}
 				
 			}
 			
 			return data;
+			
+		},
+		
+		// various checks to get within a time window
+		time: function(item, dates, data) {
+			
+			// check if date values are inside the current week (sunday to saturday)
+
+			// milestone start
+			if (dates.start) {
+
+				// add to data
+				data.push(item);
+
+			// milestone end
+			} else if (dates.end) {
+
+				// add to data
+				data.push(item);
+
+			// item due date
+			} else if (dates.due) {
+
+				// add to data
+				data.push(item);
+
+			// check for Doing label
+			} else if (item.labels.length > 0 && item.labels.includes("Doing")) {
+
+				// add to data
+				data.push(item);
+
+			}
 			
 		}
         

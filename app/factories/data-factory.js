@@ -64,22 +64,26 @@ app.dataFactory = (function() {
 		
 		// enrich layout data with content data
 		enrich: function(source, configs) {
-			console.log(source);
+			
 			var _self = this;
 			
-			// filter for milestone/assignee
-			var data = filterFactory.milestone(source, configs);
+			// filter for time, assignees
+			var filteredTimeStaff = filterFactory.filter(source, configs, true);
+			
+			// filter for only time, keeping all assignees
+			var filteredTime = filterFactory.filter(source, configs, false);
             			
 			// data for visualization
-            var initiatives = _self.postProcess(nestFactory.sum(data, "initiative_uid"), configs.initiatives);
-			var foci = _self.postProcess(nestFactory.sum(data, "focus_uid"), configs.foci);
-			var staff = nestFactory.sum(data, "assignee_name");
-			var staffList = nestFactory.nest(data, "assignee_name");
-			console.log(staffList);
+			var foci = _self.postProcess(nestFactory.timeSum(filteredTimeStaff, "focus_uid", configs.foci), configs.foci);
+			var fociList = _self.postProcess(nestFactory.timeSum(filteredTime, "focus_uid", configs.foci), configs.foci);
+            var initiatives = _self.postProcess(nestFactory.timeSum(filteredTimeStaff, "initiative_uid"), configs.initiatives);
+			var staff = nestFactory.timeSum(filteredTimeStaff, "assignee_name");
+			var staffList = nestFactory.nest(filteredTimeStaff, "assignee_name");
 			
 			// content objects
 			var content = {
 				foci: foci,
+				foci_list: fociList,
 				initiatives: initiatives,
                 rings: [foci, initiatives],
 				staff: staff,
@@ -111,16 +115,11 @@ app.dataFactory = (function() {
 					// add empty object for visualization
 					source.push({
 						key: configKeys[i],
-						value: {
-							count: 0,
-							time: {
-								estimate: 0,
-								spent: 0
-							}
-						}
+						value: nestFactory.value(0, [], "blah", [], [], [])
 					});
 					
 				}
+				
 			}
 			
 			return source;

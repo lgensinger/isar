@@ -10,17 +10,18 @@ require("../factories/visualization-factory");
 
 var d3 = require("d3");
 
-app.fillChart = (function() {
+app.barChart = (function() {
     
     var colorFactory = app.colorFactory;
     var visualizationFactory = app.visualizationFactory;
 						
     return createReactClass({
 
-        displayName: "fill-chart",
+        displayName: "bar-chart",
         
         propTypes: {
-			content: PropTypes.object.isRequired
+			content: PropTypes.object.isRequired,
+			max: PropTypes.number.isRequired
         },
         
         componentWillMount: function() {
@@ -32,10 +33,10 @@ app.fillChart = (function() {
 			
 			// store data
 			_self.content = content;
-			
+					
 			// set static values 
             // uses d3 functions to calculate the geometry
-            _self._calculateSettings(content.time.estimate);
+            _self._calculateSettings(this.props.max);
 			
         },
 
@@ -47,7 +48,7 @@ app.fillChart = (function() {
 				
 				React.createElement(
 					"div",
-					{ className: "fill-chart" },
+					{ className: "bar-chart" },
 
 					// component wrap
 					React.createElement(
@@ -60,27 +61,11 @@ app.fillChart = (function() {
 							{
 								x: _self.padding,
 								y: _self.padding,
-								width: _self.xScale(_self.content.time.spent),
+								width: _self.xScale(_self.content.count),
 								height: _self.height,
-								rx: _self.cornerRadius,
-								ry: _self.cornerRadius,
 								style: {
 									fill: colorFactory[_self.content.initiative_uid]
 								}
-							},
-							null
-						),
-
-						// background
-						React.createElement(
-							"rect",
-							{
-								x: _self.padding,
-								y: _self.padding,
-								width: _self.width,
-								height: _self.height,
-								rx: _self.cornerRadius,
-								ry: _self.cornerRadius
 							},
 							null
 						)
@@ -94,7 +79,7 @@ app.fillChart = (function() {
         },
         
         // calculate all data-independent settings
-        _calculateSettings: function(estimate) {
+        _calculateSettings: function(max) {
             
             var _self = this;
             
@@ -107,13 +92,12 @@ app.fillChart = (function() {
 			// padding accounts for stroke width see SCSS for value
             _self.width = dimensions.width;
             _self.height = dimensions.height;
-			_self.cornerRadius = _self.height / 2;
 			_self.padding = padding;
 			
 			// scales
             _self.xScale = d3.scaleLinear()
 				.range([0, _self.width])
-				.domain([0, estimate]);
+				.domain([0, max]);
             
         }
 

@@ -5,12 +5,14 @@ var ReactDOM = require("react-dom");
 var createReactClass = require("create-react-class");
 var PropTypes = require("prop-types");
 
+require("./participation-list-component");
 require("./progress-card-component");
 
 app.foci = (function() {
 	
 	// store references to other components
 	var componentMap = {
+		"participation-list": app.participationList,
 		"progress-card": app.progressCard
 	};
 
@@ -27,7 +29,8 @@ app.foci = (function() {
         render: function() {
 			
 			var components = this.props.component.components;
-			var content = this.props.content[this.props.component.data];
+			var contentBase = this.props.content;
+			var content = contentBase[this.props.component.data];
 			
             return (
                     
@@ -48,7 +51,7 @@ app.foci = (function() {
 								// add component
 								React.createElement(componentMap[component.uid], {
 									component: component,
-									content: content[i],
+									content: component.uid === "progress-card" ? content[i] : contentBase[component.data][i],
 									idx: i
 								})
 

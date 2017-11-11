@@ -60,7 +60,12 @@ function config() {
 							{
 								uid: "progress-card",
 								label: "card",
-								data: "foci_percent"
+								data: "foci"
+							},
+							{
+								uid: "participation-list",
+								label: "participation",
+								data: "foci_list"
 							}
 						]
 					}

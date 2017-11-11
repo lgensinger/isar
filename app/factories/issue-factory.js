@@ -57,6 +57,12 @@ app.issueFactory = (function() {
 			value.assignee_name = value.assignee === null ? "other" : value.assignee.name;
 			value.assignee_id = value.assignee === null ? null : value.assignee.id;
 			
+			// surface and rename time keys to match all other data objects
+			value.time = {
+				estimate: value.time_stats === undefined ? 0 : value.time_stats.time_estimate,
+				spent: value.time_stats === undefined ? 0 : value.time_stats.total_time_spent
+			};
+			
 		},
 		
 		// enrich gitlab issue object

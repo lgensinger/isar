@@ -115,3 +115,32 @@
 	width: 100%;
 	
 }
+
+/* component wrap */
+.progress-card {
+	
+	height: 200px;
+	
+}
+
+/* lead */
+.progress-card > p:first-of-type:before {
+	
+	content: "Lead: ";
+	
+}
+
+/* participant wrap */
+.participation-list > div {
+	
+	display: flex;
+	justify-content: space-around;
+	
+}
+
+/* participant wrap children */
+.participation-list > div > * {
+	
+	width: 100%;
+	
+}

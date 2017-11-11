@@ -19,6 +19,13 @@ app.utilsFactory = (function() {
 			
 			return array;
 			
+		},
+		
+		// serialize text with commas
+		serialize: function(string, index, count) {
+			
+			return count > 1 ? index !== count - 1 ? string + ", " : string : string;
+						
 		}
         
     };
