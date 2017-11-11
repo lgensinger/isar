@@ -1,5 +1,4 @@
 var config = require("../app-frontend-config");
-var dataConfig = require("../../data-config");
 var app = window.app;
 
 require("./assignee-factory");

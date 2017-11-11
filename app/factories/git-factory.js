@@ -1,5 +1,5 @@
 var app = window.app;
-var token = require("../../token");
+var token = require("../../data/token");
 
 app.gitFactory = (function() {
 	    

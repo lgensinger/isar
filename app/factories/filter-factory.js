@@ -1,4 +1,3 @@
-var dataConfig = require("../../data-config");
 var app = window.app;
 
 require("./global-factory");

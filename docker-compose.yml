@@ -4,7 +4,7 @@ version: "3"
 services:
 
   web:
-    container_name: isar.desktop
+    container_name: isar.desktop.build
     build:
       context: .
       dockerfile: Dockerfile.build

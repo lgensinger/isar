@@ -1,6 +1,6 @@
 var app = window.app;
-var dataConfig = require("../../data-config");
-var token = require("../../token");
+var dataConfig = require("../../data/data-config");
+var token = require("../../data/token");
 
 app.fociFactory = (function() {
 	    

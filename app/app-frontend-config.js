@@ -5,8 +5,8 @@ function config() {
         // theme
         theme: {
             ui: {
-                start: "dark",
-                opposite: "light"
+                start: "light",
+                opposite: "dark"
             }
         },
 		

@@ -40,10 +40,4 @@ Thumbs.db
 ###############
 node_modules
 dist
-
-# Data #
-########
-project-map.js
-token.js
-initiatives.js
-data-config.js
+data
