@@ -1,5 +1,5 @@
 var app = window.app;
-var dataConfig = require("../../data-config");
+var dataConfig = require("../../data/data-config");
 
 app.initiativeFactory = (function() {
 		    
