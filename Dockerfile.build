@@ -22,6 +22,9 @@ RUN npm install webpack -g
 # copy needed directories into container
 ADD . /
 
+# make directory for volume
+RUN mkdir /style
+
 # install needed node modules
 RUN npm install
 
