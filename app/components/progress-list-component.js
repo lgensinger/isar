@@ -7,7 +7,7 @@ var PropTypes = require("prop-types");
 
 require("../factories/color-factory");
 require("./fill-chart-component");
-require("../factories/math-factory");
+require("../factories/utils-factory");
 
 var moment = require("moment");
 
@@ -15,7 +15,7 @@ app.progressList = (function() {
     
 	var colorFactory = app.colorFactory;
 	var fillChart = app.fillChart;
-	var mathFactory = app.mathFactory;
+	var utilsFactory = app.utilsFactory;
 						
     return createReactClass({
 
@@ -93,7 +93,7 @@ app.progressList = (function() {
 								React.createElement(
 									"span",
 									null,
-									item.focus_uid
+									utilsFactory.title(item.focus_uid)
 								)
 								
 							)

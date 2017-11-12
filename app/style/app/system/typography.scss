@@ -1,0 +1,102 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** TYPOGRAPHIC COMBINATIONS ***************************************/
+
+/* !SASS VARIABLES
+/* --- !sans-serif
+/* --- !serif
+/* --- !type sizes
+/* !FONTS
+/* --- !slabo 27px
+/* --- !lato
+
+/******************************* !SASS VARIABLES *******************************/
+
+/************************/
+/***** !sans-serif ******/
+/************************/
+
+$sans-serif: "Lato";
+$sans-serif-black: 900;
+$sans-serif-bold: 900;
+$sans-serif-regular: 400;
+$sans-serif-light: 300;
+
+/*******************/
+/***** !serif ******/
+/*******************/
+
+$serif: "Slabo 27px";
+$serif-black: 700;
+$serif-bold: 700;
+$serif-regular: 400;
+$serif-light: 300;
+
+/************************/
+/***** !type sizes ******/
+/************************/
+
+/* headline */
+$headline-size: 2.25em;
+$headline-mid-size: 1.75em;
+
+/****************************** FONTS ******************************/
+
+/*******************/
+/***** !slabo ******/
+/*******************/
+
+/* regular */
+@font-face {
+    
+    font-family: $serif;
+    font-style: normal;
+    font-weight: $serif-regular;
+    src: url("../../../../node_modules/typeface-slabo-27px/files/slabo-27px-latin-400.woff2") format("woff2");
+    
+}
+
+/******************/
+/***** !lato ******/
+/******************/
+
+/* light */
+@font-face {
+    
+    font-family: $sans-serif;
+    font-style: normal;
+    font-weight: $sans-serif-light;
+    src: url("../../../../node_modules/lato-font/fonts/lato-light/lato-light.woff2") format("woff2");
+    
+}
+
+/* regular */
+@font-face {
+    
+    font-family: $sans-serif;
+    font-style: normal;
+    font-weight: $sans-serif-light;
+    src: url("../../../../node_modules/lato-font/fonts/lato-normal/lato-normal.woff2") format("woff2");
+    
+}
+
+/* italic */
+@font-face {
+    
+    font-family: $sans-serif;
+    font-style: italic;
+    font-weight: $sans-serif-regular;
+    src: url("../../../../node_modules/lato-font/fonts/lato-normal-italic/lato-normal-italic.woff2") format("woff2");
+    
+}
+
+/* bold */
+@font-face {
+    
+    font-family: $sans-serif;
+    font-style: normal;
+    font-weight: $sans-serif-bold;
+    src: url("../../../../node_modules/lato-font/fonts/lato-black/lato-black.woff2") format("woff2");
+    
+}

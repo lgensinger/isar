@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** desktop STYLE ***************************************/
+
+/* Highest desktop specific styling. */
+
+/* !IMPORTS
+/* !GLOBALS
+/* !CUSTOM
+/* --- !something
+
+/******************************* !IMPORTS *******************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+@import "../system/typography";
+ 
+/******************************* !GLOBALS *******************************/
+
+h1 {
+    
+    font-size: $headline-size;
+    text-transform: capitalize;
+    
+}
+
+p,
+li {
+
+    font-family: $sans-serif, sans-serif;
+    
+}
+
+main {
+    
+    margin: auto;
+    margin-top: $copy-gutter;
+    max-width: 1000px;
+    width: 70%;
+    
+}
+
+/******************************* !CUSTOM *******************************/

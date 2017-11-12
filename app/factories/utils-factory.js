@@ -26,7 +26,14 @@ app.utilsFactory = (function() {
 			
 			return count > 1 ? index !== count - 1 ? string + ", " : string : string;
 						
-		}
+		},
+        
+        // process title for legibility
+        title: function(string) {
+            
+            return string.replace("-", " ");
+            
+        }
         
     };
     

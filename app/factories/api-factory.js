@@ -9,7 +9,7 @@ app.apiFactory = (function() {
         success: 200,
         base: {
 			api: "/api/v4/",
-			issues: "issues?scope=all&per_page=100&",
+			issues: "issues?scope=all&state=opened&per_page=100&",
 			projects: "projects?per_page=100&",
 			users: "users?"
 		},

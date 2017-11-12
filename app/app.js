@@ -2,12 +2,14 @@
 
 // app stylesheets
 var styleBase = "./style/app/";
+var platformBase = styleBase + "platforms/";
 var themeBase = styleBase + "themes/";
 
 // design system
 require("./style/app/system");
 
 // base platform
+require(platformBase + "desktop.scss");
 
 // global components
 require("./style/app/global");
@@ -17,8 +19,10 @@ require("./style/app/global");
 // themes
 require(themeBase + "dark.scss");
 require(themeBase + "light.scss");
+require("./style/app/themes/light");
 
 // secondary platforms
+require(platformBase + "desktop-small.scss");
 
 /*************************** CONFIGS ***************************/
 

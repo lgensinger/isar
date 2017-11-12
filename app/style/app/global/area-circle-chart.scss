@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** area circle chart STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+@import "../../../../style/app/system/shapes";
+
+@import "../system/typography";
+
+/* component wrap */
+.area-circle-chart {
+    
+    margin-bottom: $copy-gutter-half;
+    
+}
+
+/* attrs wrap */
+.area-circle-chart > div {
+	
+	display: flex;
+	
+}
+
+/* headline */
+.area-circle-chart > div h1 {
+    
+    font-size: $headline-mid-size;
+    margin-bottom: 0.2em;
+    
+}
+
+/* time */
+.area-circle-chart > div p {
+    
+    font-size: $copy-large-size;
+    
+}
+
+/* time spent */
+.area-circle-chart > div p span:first-of-type {
+    
+    font-weight: $sans-serif-bold;
+    
+}
+
+/* time divider */
+.area-circle-chart > div p span:first-child:after {
+    
+    content: "/";
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    
+}
+
+/* time estimate */
+.area-circle-chart > div p span:last-of-type {
+    
+    opacity: 0.5;
+    
+}
+
+/* area circle chart wrap */
+.area-circle-chart > div > div {
+	
+	height: auto;
+    margin-right: $copy-gutter-half;
+	width: 20%;
+	
+}
+
+/* estimate circle */
+.area-circle-chart svg g g:first-of-type circle {
+	
+	fill: transparent;
+	stroke: currentColor;
+	stroke-width: $line-thick;
+	
+}
+
+/* spend circle */
+.area-circle-chart svg g g:last-of-type circle {
+	
+	fill: currentColor;
+	
+}

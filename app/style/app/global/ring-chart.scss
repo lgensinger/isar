@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** ring chart STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* component wrap */
+.ring-chart {
+    
+    height: 350px;
+    margin-left: $copy-gutter;
+    margin-right: $copy-gutter;
+    width: 350px;
+    
+}
+
+/* slice */
+.ring-chart path {
+    
+    stroke-width: 1px;
+    
+}

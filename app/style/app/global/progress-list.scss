@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** progress list STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* item wrap */
+.progress-list > div > div {
+    
+    margin-bottom: $copy-gutter-half;
+    
+}
+
+/* title/state wrap */
+.progress-list > div > div > div:first-child {
+	
+	display: flex;
+	justify-content: space-between;
+	
+}
+
+/* description */
+.progress-list > div > div p:first-of-type {
+	
+    font-size: $copy-large-size;
+	margin-bottom: 0.25em;
+	
+}
+
+/* updated/focus wrap */
+.progress-list > div > div p:last-of-type {
+	
+	display: flex;
+    font-size: $copy-mid-size;
+	justify-content: space-between;
+	
+}
+
+/* updated */
+.progress-list > div > div p:last-of-type span:first-of-type {
+	
+    font-style: italic;
+    opacity: 0.5;
+	
+}
+
+/* focus */
+.progress-list > div > div p:last-of-type span:last-of-type {
+	
+    font-size: $copy-mid-size;
+    font-weight: $sans-serif-bold;
+    text-transform: capitalize;
+	
+}

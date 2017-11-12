@@ -1,5 +1,10 @@
 var list = [
-	"aggregate-list"
+    "aggregate",
+	"aggregate-list",
+    "area-circle-chart",
+    "personnel",
+    "progress-list",
+    "ring-chart"
 ];
 
 // add dependent modules

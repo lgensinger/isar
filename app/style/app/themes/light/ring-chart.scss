@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** ring chart STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../../style/app/system/palettes";
+
+/* slice */
+.ring-chart path {
+    
+    stroke: $light-2-100;
+    
+}

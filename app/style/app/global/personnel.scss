@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** personnel STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* component wrap */
+.personnel {
+	
+	display: flex;
+	
+}
+
+/* each assignee column */
+.personnel > div {
+	
+    margin-right: $copy-gutter-double;
+    width: calc(100% - #{$copy-gutter-double});
+	
+}
+
+/* last assignee column */
+.personnel > div:last-of-type {
+    
+    margin-right: 0;
+    
+}

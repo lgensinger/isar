@@ -3,95 +3,60 @@
 
 /*************************************** aggregate-list STYLE ***************************************/
 
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
 @import "../system/palettes.scss";
 
-.aggregate {
-	
-	display: flex;
-	
+/* list/item */
+.aggregate-list ul, li {
+    
+    margin: 0;
+    padding: 0;
+    
 }
 
+/* list item */
+.aggregate-list li {
+    
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-bottom: 1em;
+    text-transform: capitalize;
+    
+}
+
+/* color swatch */
 .aggregate-list li span:first-of-type {
-	background: currentColor;
+	
 	display: inline-block;
-	height: 1em;
-	width: 1em;
+	height: 0.75em;
+    margin-right: 0.5em;
+	width: 0.75em;
 	
 }
 
-.ring-chart {
+/* list text */
+.aggregate-list li span:nth-child(2) {
     
-    height: 300px;
-    width: 300px;
-    
-}
-
-.ring-chart path {
-    
-    stroke: white;
-    stroke-width: 1px;
+    width: calc(100% - 3.75em);
     
 }
 
-.personnel {
-	
-	display: flex;
-	
+/* percentage value */
+.aggregate-list li span:last-of-type {
+    
+    font-weight: $sans-serif-bold;
+    margin-left: 0.5em;
+    text-align: right;
+    width: 2em;
+    
 }
 
-/* each assignee column */
-.personnel > div {
-	
-	width: 100%;
-	
-}
 
-/* attrs wrap */
-.area-circle-chart > div {
-	
-	display: flex;
-	
-}
 
-/* area circle chart wrap */
-.area-circle-chart > div > div {
-	
-	height: auto;
-	width: 30%;
-	
-}
-
-/* estimate circle */
-.area-circle-chart svg g g:first-of-type circle {
-	
-	fill: transparent;
-	stroke: currentColor;
-	stroke-width: 2px;
-	
-}
-
-/* spend circle */
-.area-circle-chart svg g g:last-of-type circle {
-	
-	fill: currentColor;
-	
-}
-
-/* title/state wrap */
-.progress-list > div > div > div:first-child {
-	
-	display: flex;
-	justify-content: space-between;
-	
-}
-
-/* updated/focus wrap */
-.progress-list > div > div p:last-of-type {
-	
-	display: flex;
-	justify-content: space-between;
-	
-}
 
 /* fill chart background */
 .fill-chart rect:last-of-type {

@@ -1,0 +1,20 @@
+version: "3"
+  
+
+services:
+
+  web:
+    container_name: isar.octothorpe.dev
+    build:
+      context: ../octothorpe
+      dockerfile: Dockerfile.dev
+    image: isar.octothorpe.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+      - ./data:/data
+      - ./package.json:/package.json:ro
+      - ./.babelrc:/.babelrc:ro
+      - ./.eslintrc.json:/.eslintrc.json:ro
+    command: bash -c "npm install && npm start"

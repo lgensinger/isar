@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** aggregate STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* component wrap */
+.aggregate {
+	
+	display: flex;
+    margin-bottom: $copy-gutter;
+	
+}
