@@ -6,9 +6,13 @@
 /* import from style module linked via docker */
 @import "../../../../../style/app/system/palettes";
 
-/* component wrap */
-.progress {
-	
-	background: white;
-	
+.light {
+
+    /* component wrap */
+    .progress {
+
+        background: white;
+
+    }
+    
 }

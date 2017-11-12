@@ -1,5 +1,7 @@
 var list = [
-    "ring-chart"
+    "ring-chart",
+    "progress",
+    "progress-card"
 ];
 
 // add dependent modules

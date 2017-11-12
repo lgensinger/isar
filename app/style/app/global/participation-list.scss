@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** participation list STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* component wrap */
+.participation-list {
+    
+    margin-top: $copy-gutter-half;
+    
+}
+
+/* participant wrap */
+.participation-list > div {
+	
+	display: flex;
+	justify-content: space-around;
+	
+}
+
+/* participant wrap children */
+.participation-list > div > * {
+	
+	width: 100%;
+	
+}

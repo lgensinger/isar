@@ -20,7 +20,8 @@ app.fillChart = (function() {
         displayName: "fill-chart",
         
         propTypes: {
-			content: PropTypes.object.isRequired
+			content: PropTypes.object.isRequired,
+            height: PropTypes.number.isRequired
         },
         
         componentWillMount: function() {
@@ -35,7 +36,7 @@ app.fillChart = (function() {
 			
 			// set static values 
             // uses d3 functions to calculate the geometry
-            _self._calculateSettings(content.time.estimate);
+            _self._calculateSettings(content.time.estimate, this.props.height);
 			
         },
 
@@ -94,13 +95,13 @@ app.fillChart = (function() {
         },
         
         // calculate all data-independent settings
-        _calculateSettings: function(estimate) {
+        _calculateSettings: function(estimate, height) {
             
             var _self = this;
             
             // set sizes from attributes in html element
             // if not attributes present - use default
-            var dimensions = visualizationFactory.getDimensions(100, 5);
+            var dimensions = visualizationFactory.getDimensions(100, height);
 			var padding = 1;
 			
 			// store width/height for graphic vs. svg artboard

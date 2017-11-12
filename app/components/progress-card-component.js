@@ -48,7 +48,7 @@ app.progressCard = (function() {
 					React.createElement(
 						"h1",
 						null,
-						content.key
+						utilsFactory.title(content.key)
 					),
 					
 					// lead wrap
@@ -90,7 +90,10 @@ app.progressCard = (function() {
 					// fill chart
 					React.createElement(
 						fillChart,
-						{ content: content.value },
+						{
+                            content: content.value,
+                            height: 15
+                        },
 						null
 					)
 

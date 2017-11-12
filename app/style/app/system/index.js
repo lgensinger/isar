@@ -1,6 +1,7 @@
 var list = [
 	"palettes",
-    "typography"
+    "typography",
+    "shapes"
 ];
 
 // add dependent modules

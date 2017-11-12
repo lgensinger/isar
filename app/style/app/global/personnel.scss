@@ -10,6 +10,7 @@
 .personnel {
 	
 	display: flex;
+    margin-bottom: $copy-gutter;
 	
 }
 
@@ -17,6 +18,7 @@
 .personnel > div {
 	
     margin-right: $copy-gutter-double;
+    max-width: $copy-max-width;
     width: calc(100% - #{$copy-gutter-double});
 	
 }

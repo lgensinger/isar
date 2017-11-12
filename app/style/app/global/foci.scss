@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** foci STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+/* component wrap */
+.foci {
+	
+	display: flex;
+    flex-wrap: wrap;
+	
+}
+
+/* item wrap */
+.foci > div {
+    
+    margin-bottom: $copy-gutter;
+    margin-right: $copy-gutter;
+    width: calc((100% / 3) - (#{$copy-gutter} * 2 / 3));
+    
+}
+
+/* every third item */
+.foci > div:nth-child(3n) {
+    
+    margin-right: 0;
+    
+}

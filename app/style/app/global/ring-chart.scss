@@ -6,13 +6,15 @@
 /* import from style module linked via docker */
 @import "../../../../style/app/system/typography";
 
+@import "../system/shapes";
+
 /* component wrap */
 .ring-chart {
     
-    height: 350px;
+    height: $inset-visual-width;
     margin-left: $copy-gutter;
     margin-right: $copy-gutter;
-    width: 350px;
+    width: $inset-visual-width;
     
 }
 

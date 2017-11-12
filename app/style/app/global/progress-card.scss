@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** progress card STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/typography";
+
+@import "../system/shapes";
+
+/* component wrap */
+.progress-card {
+	
+	height: $inset-visual-height;
+    padding: $copy-gutter-half;
+	
+}
+
+/* headline */
+.progress-card h1 {
+    
+    max-width: 100%;
+    min-height: 2.35em;
+    width: 100%;
+    
+}
+
+/* lead text */
+.progress-card > p:first-of-type {
+    
+    margin-bottom: 0.25em;
+    
+}
+
+/* lead prefix */
+.progress-card > p:first-of-type:before {
+	
+	content: "Lead: ";
+	
+}
+
+/* lead name */
+.progress-card > p:first-of-type span {
+    
+    font-size: $copy-large-size;
+    
+}
+
+/* partner text */
+.progress-card > p:last-of-type {
+    
+    font-size: $copy-small-size;
+    opacity: 0.75;
+    
+}
+
+/* partner prefix */
+.progress-card > p:last-of-type:before {
+	
+	content: "Partners: ";
+	
+}

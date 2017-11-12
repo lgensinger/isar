@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*************************************** fill chart STYLE ***************************************/
+
+/* import from style module linked via docker */
+@import "../../../../style/app/system/shapes";
+
+/* fill chart background */
+.fill-chart rect:last-of-type {
+	
+	fill: transparent;
+	stroke: currentColor;
+	stroke-width: $line-thin;
+	
+}

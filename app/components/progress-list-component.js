@@ -72,9 +72,10 @@ app.progressList = (function() {
 							React.createElement(
 								fillChart,
 								{
-									component: item,
-									content: item
-								}
+									content: item,
+                                    height: 4
+								},
+                                null
 							),
 							
 							// updated/focus wrap

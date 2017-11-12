@@ -6,10 +6,13 @@
 /* import from style module linked via docker */
 @import "../../../../style/app/system/typography";
 
+@import "../system/shapes";
+
 /* item wrap */
 .progress-list > div > div {
     
     margin-bottom: $copy-gutter-half;
+    max-width: calc(#{$copy-max-width} * 0.75);
     
 }
 
@@ -26,6 +29,14 @@
 	
     font-size: $copy-large-size;
 	margin-bottom: 0.25em;
+    text-transform: capitalize;
+	
+}
+
+/* fill chart background */
+.progress-list .fill-chart rect:last-of-type {
+
+	stroke-width: $line-extra-thin;
 	
 }
 

@@ -7,11 +7,13 @@ var PropTypes = require("prop-types");
 
 require("../factories/color-factory");
 require("../factories/math-factory");
+require("../factories/utils-factory");
 
 app.aggregateList = (function() {
     
 	var colorFactory = app.colorFactory;
 	var mathFactory = app.mathFactory;
+    var utilsFactory = app.utilsFactory;
 						
     return createReactClass({
 
@@ -71,8 +73,7 @@ app.aggregateList = (function() {
                                 React.createElement(
                                     "span",
                                     null,
-                                    
-                                    item.key
+                                    utilsFactory.title(item.key)
                                     
                                 ),
                                 
@@ -80,7 +81,6 @@ app.aggregateList = (function() {
                                 React.createElement(
                                     "span",
                                     null,
-                                    
                                     mathFactory.percentOfWhole(item.value.time.spent, total, true) + "%"
                                     
                                 )

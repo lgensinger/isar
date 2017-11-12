@@ -6,9 +6,13 @@
 /* import from style module linked via docker */
 @import "../../../../../style/app/system/palettes";
 
-/* slice */
-.ring-chart path {
+.light {
     
-    stroke: $light-2-100;
+    /* slice */
+    .ring-chart path {
+
+        stroke: $light-2-100;
+
+    }
     
 }
